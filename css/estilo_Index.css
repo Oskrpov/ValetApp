@@ -1,0 +1,37 @@
+body{
+    background-image: url(../src/sources/john-matychuk-yvfp5YHWGsc-unsplash.jpg);
+    background-size:cover;
+    background-attachment: fixed;
+}
+.formulario{
+        font-family: "Black Ops One", serif;
+        width: 100%;
+}
+.seccion1{
+    text-align: center;
+    align-items: center;
+}
+.seccion2{
+    text-align: center;
+    align-items: center;
+}
+.parrilla{
+display: grid;
+grid-template-columns: 50% 50%;
+}
+button:hover{
+    background: #e4d610; 
+    color: rgb(0, 0, 0); 
+}
+button{
+    border-color: #ffed00;
+    color: #000000;
+    margin-left: 40px;
+    background-color: #ffed00;
+    width: 190px;
+    height: 70px;
+    box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
+}
+#nuevocliente{
+    border-radius: 8px;
+}

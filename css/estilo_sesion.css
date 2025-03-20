@@ -1,0 +1,56 @@
+body{
+    background-image: url(../src/sources/john-matychuk-yvfp5YHWGsc-unsplash.jpg);
+    background-size:cover;
+    background-attachment: fixed;
+}
+.titulo{
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 10%;
+    left: 44%;
+    margin: -25px 0 0 -25px;
+}
+.cajatexto{
+    position: relative;
+    left: 10%;
+}
+.labels{
+    font-weight: bold;
+    color: #000000;
+    position: relative;
+    left: 20%;
+    width: 100%;
+}
+#iniciar:hover { 
+    background: #e4d610; 
+    color: rgb(0, 0, 0); 
+  }
+#iniciar{
+    font-weight: bold;
+    border-color: #ffed00;
+    border-radius: 6px;
+    color: #000000;
+    margin-left: 40px;
+    background-color: #ffed00;
+    width: 135px;
+    height: 40px;
+}
+button{
+    box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
+}
+.centro{
+    text-align: center;
+}
+.olvide{
+    margin-left: 35px;
+    text-align: center;
+}
+.link{
+    color: #1d1d1d;
+    font-weight: bold;
+    font-size:medium;
+}
+h3{
+    margin-right: 6px;
+}

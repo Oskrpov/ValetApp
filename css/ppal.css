@@ -1,0 +1,50 @@
+.body{
+    background-image: url(../src/sources/john-matychuk-yvfp5YHWGsc-unsplash.jpg);
+    background-size:cover;
+    background-attachment: fixed;
+}
+
+.usuarios{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.valet:hover{
+    border-radius: 5px;
+    box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
+}
+.valet{
+    text-align: center;
+    font-family: "Madimi One", serif;
+    font-size: 23px;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 38%;
+    left: 20%;
+    margin: -25px 0 0 -25px;
+}
+.titulo{
+    width: 380px;
+    height: 380px;
+    position: absolute;
+    top: 35%;
+    left: 37%;
+    margin: -25px 0 0 -25px;
+}
+.administrador:hover{
+    border-radius: 5px;
+    box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
+}
+.administrador{
+    text-align: center;
+    font-family: "Madimi One", serif;
+    font-size: 23px;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 38%;
+    right: 20%;
+    margin: -25px 0 0 -25px;
+}
