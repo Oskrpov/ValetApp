@@ -18,3 +18,11 @@ document.addEventListener("click", (e)=>{
     if(e.target.matches("#cierre")) location.href="inicio_sesión.html"
 }
 )
+document.addEventListener("click", (e)=>{
+    if(e.target.matches("#regresar")) location.href="index.html"
+}
+)
+document.addEventListener("click", (e)=>{
+    if(e.target.matches("#Continuar")) location.href="novedades_vehiculo.html"
+}
+)

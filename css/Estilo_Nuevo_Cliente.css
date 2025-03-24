@@ -1,153 +1,46 @@
+body{
+    background-image: url(../src/sources/john-matychuk-yvfp5YHWGsc-unsplash.jpg);
+    background-size:cover;
+    background-attachment: fixed;
+}
 .formulario{
-    border-style: solid;
-    border-color: #6C8EBF;
-    border-width: 1px;
-    border-radius: 3px;
-    border-radius: 3px;
     width: 45%;
-    box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
 }
-.titulo{
-    display: flex;  
-    flood-color: #007FFF;
-    font-size: 40px;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #DAE8FC;
-    border-style: solid;
-    border-color: #6C8EBF;
-    border-width: 1px;
-    border-radius: 3px;
+.seccion{
+    display: flex;
 }
-.regresar{
-    margin-left: 10px;
-    color: red;
-    text-decoration: underline;
-    font-family: 'Times New Roman';
-    display: inline-table;
-    font-size: medium;
-    width: 50%;
-   text-align: left;
+label{
+    text-align: center;
+    border-radius: 4px;
+    background-color: #ffed00;
+    width: 100%;
+    height: 60%;
 }
 .texto{
-    margin-left: 30px;
-    color: red;
-    display: table-cell;
-    vertical-align: bottom;
-}
-.ValetApp{
-    color: #007FFF;
-    margin-right: 10px;
-    width: 50%;
-    text-align: right;
-}
-.header{
-    display: flex;
-}
-.nuevocliente{
-    font-size: 400px;
-    margin-top: 8px;
-    margin-left: 40px;
-    width: 50%;
-    text-align: left;
-}
-.nuevocliente h3{
-    color: #007fff;
-    font-weight: bold;
-    font-family: Helvetica;
-    font-size: 40px;
-    text-shadow: 4.0px 10.0px 10.0px hsl(0deg 0% 0% / 0.25);
-}
-.usuarioreg{
-    text-decoration: underline;
-    font-family: monospace;
-    color: #007FFF;
-    margin-right: 3px;
-    font-family:monospace;
-    width: 50%;
-    text-align: right;
-}
-.usuarioreg a{
-    margin-right: 5px;
-}
-.sec1{
-    display: flex;
-}
-.nomb{
+    font-family: "Black Ops One", serif;
     margin-left: 70px;
-    color: #007FFF;
+    color: black;
     width: 30%;
     text-align: left;
 }
-.inp1{ 
+.input1{ 
     margin-right: 0;
     width: 70%;
 }
-.inpnombres{
+.inptexto{
+    margin-left: 20px;
     width: 80%;
-}
-.sec2{
-    display: flex;
-}
-.apell{
-    margin-left: 70px;
-    color: #007FFF;
-    width: 30%;
-    text-align: left;
-}
-.inp2{
-    margin-right: 0;
-    width: 70%;
-}
-.inpapellidos{
-    width: 80%;
-}
-.sec3{
-    display: flex;
-}
-.doc{
-    margin-left: 70px;
-    color: #007FFF;
-    width: 30%;
-    text-align: left;
-}
-.inp3{
-    margin-right: 0;
-    width: 70%;
 }
 .inpdocumento{
+    margin-left: 20px;
     width: 35%;
-}
-.sec4{
-    display: flex;
-}
-.tel{
-    margin-left: 70px;
-    color: #007FFF;
-    width: 30%;
-    text-align: left;
-}
-.inp4{
-    margin-right: 0;
-    width: 70%;
 }
 .inptelefono{
+    margin-left: 20px;
     width: 35%;
 }
-.sec5{
-    display: flex;
-}
-.plac{
-    margin-left: 70px;
-    color: #007FFF;
-    width: 30%;
-    text-align: left;
-}
-.inp5{
-    margin-right: 0;
-    width: 70%;
-}
 .inpplaca{
+    margin-left: 20px;
     width: 25%;
 }
 .boton{
@@ -155,18 +48,37 @@
     justify-content: center;
     margin-bottom: 15px;
 }
-label{
-    font-weight: 600;
-}
 button{
+    height: 40px;
+    width: 140px;
     box-shadow: 4.0px 4.0px 6.0px hsl(0deg 0% 0% / 0.25);
 }
-#botonbuscar{
-    margin-left: 46px;
-    width: 120px;
-    height: 35px;
+#Continuar:hover{
+    background: #26a80c; 
+    color: rgb(0, 0, 0);
 }
-#titulo{
-    margin-top: 20px;
-    font-size: 30px;
+#Continuar{
+    border-color: #26c406;
+    background-color: #26c406;
+    font-family: "Black Ops One", serif;
+    border-radius: 8px;
+    margin-left: 10%;
+}
+#regresar:hover{
+    background: #b61616; 
+    color: rgb(0, 0, 0);
+}
+#regresar{
+    background-color: #d61a1a;
+    border-color: #d61a1a;
+    font-family: "Black Ops One", serif;
+    border-radius: 8px;
+    margin-right: 10%;
+}
+.titulo{
+    background-color: #ffed00;
+    border-radius: 8px;
+    text-align: center;
+    font-size: xx-large;
+    font-family: "Black Ops One", serif;
 }
