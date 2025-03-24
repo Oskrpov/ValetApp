@@ -89,3 +89,18 @@ button{
     border-radius: 8px;
     margin-left: 10%;
 }
+#buscarplaca:hover{
+    background: #26a80c; 
+    color: rgb(0, 0, 0);
+}
+#buscarregistro{
+    border-color: #26c406;
+    background-color: #26c406;
+    font-family: "Black Ops One", serif;
+    border-radius: 8px;
+    margin-left: 10%;
+}
+#buscarregistro:hover{
+    background: #26a80c; 
+    color: rgb(0, 0, 0);
+}

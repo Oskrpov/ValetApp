@@ -31,6 +31,6 @@ document.addEventListener("click", (e)=>{
 }
 )
 document.addEventListener("click", (e)=>{
-    if(e.target.matches("#buscarplaca")) location.href=""
+    if(e.target.matches("#buscarregistro")) location.href="buscar_registro.html"
 }
 )
