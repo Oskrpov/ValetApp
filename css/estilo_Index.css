@@ -7,6 +7,15 @@ body{
         font-family: "Black Ops One", serif;
         width: 100%;
 }
+.menu{
+    margin-right: 10%;
+    margin-left: 10%;
+    background-color: #ffed00;
+    border-radius: 8px;
+    text-align: center;
+    font-size: xx-large;
+    font-family: "Black Ops One", serif;
+}
 .seccion1{
     text-align: center;
     align-items: center;
