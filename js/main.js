@@ -14,3 +14,7 @@ document.addEventListener("click", (e)=>{
     if(e.target.matches("#continuarnovedades")) location.href="datos_cliente.html"
 }
 )
+document.addEventListener("click", (e)=>{
+    if(e.target.matches("#cierre")) location.href="inicio_sesión.html"
+}
+)

@@ -50,3 +50,15 @@ button{
 #informes{
     border-radius: 8px;
 }
+#cierre{
+    align-items: center;
+    height: 40px;
+    width: 140px;
+    background-color: #d61a1a;
+    border-color: #d61a1a;
+    border-radius: 8px;
+}
+.seccion3{
+    text-align: center;
+    align-items: center;
+}
