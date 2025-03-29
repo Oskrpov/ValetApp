@@ -1,5 +1,5 @@
 <?php
-    $servidor = 'localhost';
+  /*  $servidor = '127.0.0.1';
     $base = 'valetparking';
     $usuario = 'root';
     $contrasena = '';
@@ -8,14 +8,14 @@
     if ($conexion->connect_error) {
         die('No se pudo conectar con la base de datos: ' . $conexion->connect_error);
     }
-    //echo 'Conexión exitosa a la base de datos.';
+    //Conexión exitosa a la base de datos.
     echo 'Conexión exitosa a la base de datos.';
     // cierre de la conexion
     $conexion->close();
     //echo 'Conexión cerrada.';
-
-/*class DB{
-    private $servidor = 'localhost';
+*/
+class Db{
+    private $servidor = '127.0.0.1';
     private $base = 'valetparking';
     private $usuario = 'root';
     private $contrasena = '';
@@ -25,7 +25,8 @@
         if ($conexion->connect_error) {
             die('No se pudo conectar con la base de datos: ' . $conexion->connect_error);
         }
-        return $conexion;
+        echo 'Conexión exitosa a la base de datos.';
+            return $conexion;
     }
 
-}*/
+}
