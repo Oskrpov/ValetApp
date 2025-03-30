@@ -1,6 +1,5 @@
 <?php
-$credenciales=file_get_contents('db.json');
-$credenciales=json_decode($credenciales,true);
+include_once 'llaves.php';
 class Db{
     private $servidor;
     private $base;
