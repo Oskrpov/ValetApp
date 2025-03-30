@@ -18,7 +18,7 @@ class Db{
         if ($conexion->connect_error) {
             die('No se pudo conectar con la base de datos: ' . $conexion->connect_error);
         }
-        echo 'Conexión exitosa a la base de datos.';
+        //echo 'Conexión exitosa a la base de datos.';
             return $conexion;
     }
 //esta es una prueba de un commit y un push desde visual studio code
