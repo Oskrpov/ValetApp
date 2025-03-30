@@ -21,5 +21,5 @@ class Db{
         echo 'Conexión exitosa a la base de datos.';
             return $conexion;
     }
-
+//esta es una prueba de un commit y un push desde visual studio code
 }
