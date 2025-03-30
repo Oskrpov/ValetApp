@@ -15,7 +15,7 @@ document.addEventListener("click", (e)=>{
 }
 )
 document.addEventListener("click", (e)=>{
-    if(e.target.matches("#cierre")) location.href="inicio_sesión.html"
+    if(e.target.matches("#cierre")) location.href="inicio_sesion.html"
 }
 )
 document.addEventListener("click", (e)=>{
