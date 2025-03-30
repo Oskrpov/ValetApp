@@ -1,16 +1,16 @@
 <?php
 require_once 'db.php';
 try{
-    if($_SERVER['REQUEST_METHOD'] == 'GET'){
-    $_POST = json_decode(file_get_contents('php://input'), true);
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $data = json_decode(file_get_contents('php://input'), true);
      try{
         //validacion de parametros
-        if(isset($_GET['usuario']) && isset($_GET['contrasena'])){
+        if(isset($_POST['usuario']) && isset($_POST['contrasena'])){
             //conexion a la base de datos
             $base = new Db();
             $conn = $base->conectar();
-            $user = $_GET['usuario'];
-            $pass = $_GET['contrasena'];
+            $user = $_POST['usuario'];
+            $pass = $_POST['contrasena'];
             $sql = "SELECT `ID_Funcionario`,`Nombres`,`Apellidos` FROM `tbfuncionarios` WHERE Perfil=:username and Contrasena=MD5(:password_user)";
             $stmt = $conn->prepare($sql);
             $stmt->bindvalue(':username', $user, PDO::PARAM_STR);
@@ -23,7 +23,7 @@ try{
                     $nombres = $resultado[0]['Nombres']. " ".$resultado[0]['Apellidos'];
                     //devolviendo los datos del usuario
                     header("HTTP/1.1 200 OK");
-                    echo json_encode(array("Code"=>200, "msg" => "Usuario encontrado ", "ID_Funcionario"=>$id, "Nombres"=>$nombres));
+                    echo json_encode(array("Usuario encontrado!!!", "ID_Funcionario:"=>$id, "Nombres: "=>$nombres));
                 }else{
                     //si el usuario no existe
                     header("HTTP/1.1 203 Non-Authoritative Information");
