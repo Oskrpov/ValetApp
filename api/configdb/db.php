@@ -1,25 +1,18 @@
 <?php
-  /*  $servidor = '127.0.0.1';
-    $base = 'valetparking';
-    $usuario = 'root';
-    $contrasena = '';
-
-    $conexion = new mysqli($servidor, $usuario, $contrasena, $base);
-    if ($conexion->connect_error) {
-        die('No se pudo conectar con la base de datos: ' . $conexion->connect_error);
-    }
-    //Conexión exitosa a la base de datos.
-    echo 'Conexión exitosa a la base de datos.';
-    // cierre de la conexion
-    $conexion->close();
-    //echo 'Conexión cerrada.';
-*/
+$credenciales=file_get_contents('..//../config/db.json');
+$credenciales=json_decode($credenciales,true);
 class Db{
-    private $servidor = '127.0.0.1';
-    private $base = 'valetparking';
-    private $usuario = 'root';
-    private $contrasena = '';
-
+    private $servidor;
+    private $base;
+    private $usuario;
+    private $contrasena;
+    public function __construct(){
+        global $credenciales;
+        $this->servidor=$credenciales['host'];
+        $this->base=$credenciales['db'];
+        $this->usuario=$credenciales['user'];
+        $this->contrasena=$credenciales['pass'];
+    }
     public function conectar(){
         $conexion = new mysqli($this->servidor, $this->usuario, $this->contrasena, $this->base);
         if ($conexion->connect_error) {
