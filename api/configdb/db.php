@@ -13,12 +13,13 @@ class Db{
         $this->contrasena=$credenciales['pass'];
     }
     public function conectar(){
-        $conexion = new mysqli($this->servidor, $this->usuario, $this->contrasena, $this->base);
-        if ($conexion->connect_error) {
-            die('No se pudo conectar con la base de datos: ' . $conexion->connect_error);
-        }
-        //echo 'Conexión exitosa a la base de datos.';
+        try{
+        $conexion=new PDO("mysql:host=$this->servidor;dbname=$this->base;charset=utf8",$this->usuario,$this->contrasena);
+        $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $conexion;
+    } catch(PDOException $e){
+            return "Error de conexion: " . $e->getMessage();
+        }
     }
 //esta es una prueba de un commit y un push desde visual studio code
 }
