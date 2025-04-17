@@ -21,5 +21,4 @@ class Db{
             return "Error de conexion: " . $e->getMessage();
         }
     }
-//esta es una prueba de un commit y un push desde visual studio code
 }

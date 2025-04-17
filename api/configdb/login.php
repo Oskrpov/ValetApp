@@ -1,10 +1,12 @@
 <?php
 require_once 'db.php';
+header("Access-Control-Allow-Origin: *");
+header("content-Type: application/json");
 try{
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $data = json_decode(file_get_contents('php://input'), true);
      try{
         //validacion de parametros
+       $_POST = json_decode(file_get_contents('php://input'), true);
         if(isset($_POST['usuario']) && isset($_POST['contrasena'])){
             //conexion a la base de datos
             $base = new Db();
@@ -27,7 +29,7 @@ try{
                 }else{
                     //si el usuario no existe
                     header("HTTP/1.1 203 Non-Authoritative Information");
-                    echo json_encode(array("Code"=>201, "msg" => "Las credenciales no son validas"));
+                    echo json_encode(array("Code"=>200, "msg" => "Las credenciales no son validas"));
                 }
         }else{
             header('HTTP/1.1 500 Internal Server Error');
