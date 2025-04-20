@@ -10,7 +10,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
       return;
     }
     
-    console.log("Credenciales ingresadas:", {username, password});
+    //console.log("Credenciales ingresadas:", {username, password});
 
   });
   function url(destino){
