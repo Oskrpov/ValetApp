@@ -23,7 +23,7 @@ export function validarlogin() {
         }, 3000);
         return false;
     }
-    enivarAjax({
+    let info={
         url: "../api/configdb/login.php",
         method: "POST",
         param: {
@@ -31,11 +31,11 @@ export function validarlogin() {
             contrasena: pass
         },
         fresp: (data) => {
-            if (data.code == 200) {
-                url("../src/index.html")
-            } else {
+            if (data.code == 200) 
+                $div_msg.innerHTML = data.usuario
+             else 
                 $div_msg.innerHTML = data.msg
-            }
         }
-    });
+    }
+    enivarAjax(info);
 }

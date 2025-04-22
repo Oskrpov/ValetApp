@@ -1,21 +1,16 @@
 
 export async function enivarAjax(info){
-    let {url,method,param,fresp} = info
-    
-    //fetch
-    let header={
-    headers:{
-        "Content-Type": "application/json"
-    },
-    method:"POST",
-    body: JSON.stringify(param)  
-    }
+    let {url , method , param , fresp} = info
+    if(param!==undefined && method==="GET") url+="?"+new URLSearchParams(param).toString()
 
-await fetch(url,header)
-.then(resp=> resp.json())
-.then((data)=>{
-    fresp(data)
-})
-.catch((error)=>{})
-console.log("prueba de await")
+    if(method==="POST"||method==="PUT"||method==="DELETE")method={method,headers:{"Content-Type": "application/json"},body:JSON.stringify(param)}
+    else method={method,headers:{"Content-Type": "application/json"}}
+
+    try{
+        let resp = await fetch(url,method)
+        if(!resp.ok) throw new Error("Error en la respuesta del servidor")
+            fresp(await resp.json())
+    } catch(error){
+        fresp({code:500,msg:"Error en la solicitud"})
+    }
 }
