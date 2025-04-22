@@ -21,27 +21,27 @@ try{
                 $resultado = $stmt->fetchALL(PDO::FETCH_ASSOC);
                 if(count($resultado)>0){
                     //si el usuario existe
-                    $id = $resultado[0]['ID_Funcionario'];
+                    $idUser = $resultado[0]['ID_Funcionario'];
                     $nombres = $resultado[0]['Nombres']. " ".$resultado[0]['Apellidos'];
                     //devolviendo los datos del usuario
                     header("HTTP/1.1 200 OK");
-                    echo json_encode(array("Usuario encontrado!!!", "ID_Funcionario:"=>$id, "Nombres: "=>$nombres));
+                    echo json_encode(array("code"=>200, "ID_Funcionario"=>$idUser, "Nombres: "=>$nombres));
                 }else{
                     //si el usuario no existe
                     header("HTTP/1.1 203 Non-Authoritative Information");
-                    echo json_encode(array("Code"=>200, "msg" => "Las credenciales no son validas"));
+                    echo json_encode(array("code"=>203, "msg" => "Las credenciales no son validas"));
                 }
         }else{
             header('HTTP/1.1 500 Internal Server Error');
-            echo json_encode(array("Code"=>400, "msg" => "error al ejecutar la consulta"));
+            echo json_encode(array("code"=>400, "msg" => "error al ejecutar la consulta"));
         }
     } else{
     header('HTTP/1.1 400 Bad Request');
-    echo json_encode(array("Code"=>400, "msg" => "faltan parametros necesarios"));
+    echo json_encode(array("code"=>400, "msg" => "faltan parametros necesarios"));
     }
 } catch (Exception $e) {
     header('HTTP/1.1 500 Internal Server Error');
-    echo json_encode(array("Code"=>500, "msg" => "Error en el servidor: " . $e->getMessage()));
+    echo json_encode(array("code"=>500, "msg" => "Error en el servidor: " . $e->getMessage()));
     }
 }   else{
         header("HTTP/1.1 400 Bad Request");

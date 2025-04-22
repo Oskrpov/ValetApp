@@ -1,4 +1,4 @@
-import { enivarAjax } from "./tools.js"
+import { enivarAjax, url } from "./tools.js"
 export function validarlogin() {
     let ExReg_mail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/
     let ExRegContraseña = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,18}$/
@@ -31,11 +31,12 @@ export function validarlogin() {
             contrasena: pass
         },
         fresp: (data) => {
-            if (data.code == 200) 
-                $div_msg.innerHTML = data.usuario
+            console.log("RESPUESTA DEL SERVIDOR:", data);
+            if (data.code==200) 
+                url("index.html?id=" +data.ID_Funcionario)
              else 
                 $div_msg.innerHTML = data.msg
         }
-    }
+    }   
     enivarAjax(info);
 }

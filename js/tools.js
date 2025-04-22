@@ -14,3 +14,7 @@ export async function enivarAjax(info){
         fresp({code:500,msg:"Error en la solicitud"})
     }
 }
+
+export function url(destino){
+    location.href = destino
+  }
