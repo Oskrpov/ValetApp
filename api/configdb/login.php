@@ -13,7 +13,7 @@ try{
             $conn = $base->conectar();
             $user = $_POST['usuario'];
             $pass = $_POST['contrasena'];
-            $sql = "SELECT `ID_Funcionario`,`Nombres`,`Apellidos` FROM `tbfuncionarios` WHERE Perfil=:username and Contrasena=MD5(:password_user)";
+            $sql = "SELECT `ID_Funcionario`,`Nombres`,`Apellidos` FROM `tbfuncionarios` WHERE Perfil=:username and Contrasena=:password_user";
             $stmt = $conn->prepare($sql);
             $stmt->bindvalue(':username', $user, PDO::PARAM_STR);
             $stmt->bindvalue(':password_user', $pass, PDO::PARAM_STR);

@@ -1,4 +1,5 @@
 import { enivarAjax, url } from "./tools.js"
+import { } from "./md5.js";
 export function validarlogin() {
     let ExReg_mail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/
     let ExRegContraseña = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,18}$/
@@ -7,6 +8,7 @@ export function validarlogin() {
     $div_msg.innerHTML = "Procesando..."
 
     let usuario = username.value, pass = password.value
+    password.value=md5(pass)
     // console.log("user: "+usuario,"password: "+pass)
     if (!ExReg_mail.test(usuario)) {
         msg = "Correo Invalido"
@@ -28,7 +30,7 @@ export function validarlogin() {
         method: "POST",
         param: {
             usuario: usuario,
-            contrasena: pass
+            contrasena: md5(pass)
         },
         fresp: (data) => {
             console.log("RESPUESTA DEL SERVIDOR:", data);
