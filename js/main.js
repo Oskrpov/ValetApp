@@ -1,9 +1,8 @@
-import {validarlogin}from"./login.js"
+import { validarlogin } from "./login.js"
 
 
-  document.addEventListener("submit", (e)=>{
-    e.preventDefault()
-    if(e.target.matches("#loginForm")) validarlogin()
-  })
+document.addEventListener("submit", (e) => {
+  e.preventDefault()
+  if (e.target.matches("#loginForm")) validarlogin()
+})
 
-  

@@ -26,7 +26,7 @@ export function validarlogin() {
         return false;
     }
     let info={
-        url: "../api/configdb/login.php",
+        url: "../api/login/login.php",
         method: "POST",
         param: {
             usuario: usuario,
