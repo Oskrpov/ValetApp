@@ -8,67 +8,77 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/Estilo_Nuevo_Cliente.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   </head>
   <body class="d-flex justify-content-center align-items-center vh-100">
     <div class="formulario">
-        <div class="titulo">NUEVO CLIENTE</div>
-        <div><br><br>
-            <section class="seccion">
-                <div class="texto">
-                    <label>NOMBRES</label>
-                </div>
-                <div class="input1">
-                    <input type="text" class="inptexto">
-                </div>
-                <br><br>
-            </section>
-            <section class="seccion">
-                <div class="texto">
-                    <label>APELLIDOS</label>
-                </div>
-                <div class="input1">
-                    <input type="text" class="inptexto">
-                </div>
-                <br><br>
-            </section>
-            <section class="seccion">
-                <div class="texto">
-                    <label>DOCUMENTO</label>
-                </div>
-                <div class="input1">
-                    <input type="text" class="inpdocumento">
-                </div>
-                <br><br>
-            </section>
-            <section class="seccion">
-                <div class="texto">
-                    <label>TELEFONO</label>
-                </div>
-                <div class="input1">
-                    <input type="text" class="inptelefono">
-                </div>
-                <br><br>
-            </section>
-            <section class="seccion">
-                <div class="texto">
-                    <label>PLACA</label>
-                </div>
-                <div class="input1">
-                    <input type="text" class="inpplaca">
-                </div>
-                <br><br>
-            </section><br>
-            <div class="boton">
-                <button id="regresar">Regresar</button>
-            <div class="boton">
-                <button id="Continuar">Continuar</button>
-            </div><br>
+      <div class="titulo">NUEVO CLIENTE</div>
+      <form action="../api/registros/clientenuevo.php" method="POST">
+        <br><br>
+        <section class="seccion">
+          <div class="texto">
+            <label>NOMBRES</label>
+          </div>
+          <div class="input1">
+            <input type="text" class="inptexto" name="nombres" required>
+          </div>
+          <br><br>
+        </section>
+
+        <section class="seccion">
+          <div class="texto">
+            <label>APELLIDOS</label>
+          </div>
+          <div class="input1">
+            <input type="text" class="inptexto" name="apellidos" required>
+          </div>
+          <br><br>
+        </section>
+
+        <section class="seccion">
+          <div class="texto">
+            <label>DOCUMENTO</label>
+          </div>
+          <div class="input1">
+            <input type="text" class="inpdocumento" name="documento" required>
+          </div>
+          <br><br>
+        </section>
+
+        <section class="seccion">
+          <div class="texto">
+            <label>TELEFONO</label>
+          </div>
+          <div class="input1">
+            <input type="text" class="inptelefono" name="telefono" required>
+          </div>
+          <br><br>
+        </section>
+
+        <section class="seccion">
+          <div class="texto">
+            <label>PLACA</label>
+          </div>
+          <div class="input1">
+            <input type="text" class="inpplaca" name="placa" required>
+          </div>
+          <br><br>
+        </section>
+
+        <div class="boton">
+          <button type="button" id="regresar">Regresar</button>
         </div>
+
+        <div class="boton">
+          <button type="submit" id="Continuar">Continuar</button>
+        </div>
+        <br>
+      </form>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="module" src="../js/main.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="module" src="../js/index.js"></script>
   </body>
 </html>
