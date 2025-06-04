@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es">
-  <head>
+<head>
     <title>Cliente Nuevo</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,76 +9,81 @@
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/Estilo_Nuevo_Cliente.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  </head>
-  <body class="d-flex justify-content-center align-items-center vh-100">
-    <div class="formulario">
-      <div class="titulo">NUEVO CLIENTE</div>
-      <form action="../api/registros/clientenuevo.php" method="POST">
-        <br><br>
-        <section class="seccion">
-          <div class="texto">
-            <label>NOMBRES</label>
-          </div>
-          <div class="input1">
-            <input type="text" class="inptexto" name="nombres" required>
-          </div>
-          <br><br>
-        </section>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Botón hamburguesa para mostrar/ocultar menú -->
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
 
-        <section class="seccion">
-          <div class="texto">
-            <label>APELLIDOS</label>
-          </div>
-          <div class="input1">
-            <input type="text" class="inptexto" name="apellidos" required>
-          </div>
-          <br><br>
-        </section>
-
-        <section class="seccion">
-          <div class="texto">
-            <label>DOCUMENTO</label>
-          </div>
-          <div class="input1">
-            <input type="text" class="inpdocumento" name="documento" required>
-          </div>
-          <br><br>
-        </section>
-
-        <section class="seccion">
-          <div class="texto">
-            <label>TELEFONO</label>
-          </div>
-          <div class="input1">
-            <input type="text" class="inptelefono" name="telefono" required>
-          </div>
-          <br><br>
-        </section>
-
-        <section class="seccion">
-          <div class="texto">
-            <label>PLACA</label>
-          </div>
-          <div class="input1">
-            <input type="text" class="inpplaca" name="placa" required>
-          </div>
-          <br><br>
-        </section>
-
-        <div class="boton">
-          <button type="button" id="regresar">Regresar</button>
+    <!-- Menú Lateral -->
+    <nav class="sidebar" id="sidebar">
+        <div class="menu-title">MENÚ PRINCIPAL</div>
+        <div class="menu-grid">
+            <button id="nuevocliente"><i class="fas fa-user-plus"></i> Nuevo Cliente</button>
+            <button id="buscarcliente"><i class="fas fa-search"></i> Buscar Cliente</button>
+            <button id="ubicarvehiculo"><i class="fas fa-car"></i> Ubicar Vehículo</button>
+            <button id="buscarregistro"><i class="fas fa-folder-open"></i> Buscar Registro</button>
+            <button id="historial"><i class="fas fa-history"></i> Historial</button>
+            <button id="informes"><i class="fas fa-chart-bar"></i> Informes</button>
         </div>
+        <button id="cierre"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+    </nav>
 
-        <div class="boton">
-          <button type="submit" id="Continuar">Continuar</button>
+    <!-- Contenido Principal -->
+    <main class="main-content" id="mainContent">
+        <div class="formulario">
+            <div class="titulo">NUEVO CLIENTE</div>
+            <form action="../api/registros/cliente_nuevo.php" method="POST">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>NOMBRES</label>
+                        <input type="text" class="form-control" name="nombres" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>APELLIDOS</label>
+                        <input type="text" class="form-control" name="apellidos" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>DOCUMENTO</label>
+                        <input type="text" class="form-control" name="documento" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>TELEFONO</label>
+                        <input type="text" class="form-control" name="telefono" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>PLACA</label>
+                        <input type="text" class="form-control" name="placa" required>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" id="regresar">Regresar</button>
+                    <button type="submit" id="Continuar" >Continuar</button>
+                </div>
+            </form>
         </div>
-        <br>
-      </form>
-    </div>
+    </main>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="module" src="../js/index.js"></script>
-  </body>
+    <script>
+        // Control del menú lateral
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            sidebar.classList.toggle('active');
+            mainContent.classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+</body>
 </html>

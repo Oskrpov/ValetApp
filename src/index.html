@@ -1,4 +1,4 @@
-<!doctype html>
+<!--<!doctype html>
 <html lang="es">
   <head>
     <title>Menú Principal</title>
@@ -36,4 +36,49 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="module" src="../js/index.js"></script>
   </body>
+</html>-->
+<!doctype html>
+<html lang="es">
+<head>
+    <title>Menú Principal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/estilo_Index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Botón hamburguesa -->
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Menú Lateral -->
+    <nav class="sidebar" id="sidebar">
+        <div class="menu-title">MENÚ PRINCIPAL</div>
+        <div class="menu-grid">
+            <button id="nuevocliente"><i class="fas fa-user-plus"></i> Nuevo Cliente</button>
+            <button id="buscarcliente"><i class="fas fa-search"></i> Buscar Cliente</button>
+            <button id="ubicarvehiculo"><i class="fas fa-car"></i> Ubicar Vehículo</button>
+            <button id="buscarregistro"><i class="fas fa-folder-open"></i> Buscar Registro</button>
+            <button id="historial"><i class="fas fa-history"></i> Historial</button>
+            <button id="informes"><i class="fas fa-chart-bar"></i> Informes</button>
+        </div>
+        <button id="cierre"><i class="fas fa-power-off"></i> Cerrar Sesión</button>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content" id="mainContent">
+        <!-- Espacio para tu contenido dinámico -->
+    </main>
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+    <script type="module" src="../js/index.js"></script>
+</body>
 </html>

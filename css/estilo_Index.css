@@ -1,73 +1,129 @@
-body{
+/* Estilos generales heredados del login */
+body {
     background-image: url(../src/sources/john-matychuk-yvfp5YHWGsc-unsplash.jpg);
-    background-size:cover;
+    background-size: cover;
     background-attachment: fixed;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    transition: all 0.4s ease;
 }
-.formulario{
-        font-family: "Black Ops One", serif;
-        width: 100%;
+
+/* Botón hamburguesa */
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #ffed00;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 8px 8px 16px rgba(0,0,0,0.25);
+    transition: all 0.3s;
 }
-.menu{
-    margin-right: 10%;
-    margin-left: 10%;
-    background-color: #ffed00;
+
+.menu-toggle.active {
+    left: 270px;
+    background: #e4d610;
+}
+
+/* Menú lateral - Estilo basado en tu login */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100vh;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(5px);
+    transition: all 0.4s ease;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.menu-title {
+    background: #ffed00;
+    color: #000;
+    margin: 0 20px 30px;
+    padding: 15px;
     border-radius: 8px;
     text-align: center;
-    font-size: xx-large;
-    font-family: "Black Ops One", serif;
+    font-size: 1.8rem;
+    font-family: "Black Ops One", cursive;
+    box-shadow: 8px 8px 16px rgba(0,0,0,0.25);
 }
-.seccion1{
-    text-align: center;
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 15px;
+    padding: 0 20px;
+    flex-grow: 1;
+}
+
+/* Botones del menú - Mismo estilo que tu login */
+.sidebar button {
+    background: #ffed00;
+    color: #000;
+    border: 2px solid #ffed00;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 8px 8px 16px rgba(0,0,0,0.25);
+    text-align: left;
+    font-family: "Black Ops One", cursive;
+    display: flex;
     align-items: center;
+    gap: 10px;
 }
-.seccion2{
-    text-align: center;
-    align-items: center;
+
+.sidebar button:hover {
+    background: #e4d610;
+    transform: translateY(-3px);
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.3);
 }
-.parrilla{
-display: grid;
-grid-template-columns: 50% 50%;
-}
-button:hover{
-    background: #e4d610; 
-    color: rgb(0, 0, 0); 
-}
-button{
-    border-color: #ffed00;
-    color: #000000;
-    margin-left: 40px;
-    background-color: #ffed00;
-    width: 190px;
-    height: 70px;
-    box-shadow: 8.0px 16.0px 16.0px hsl(0deg 0% 0% / 0.25);
-}
-#nuevocliente{
-    border-radius: 8px;
-}
-#buscarcliente{
-    border-radius: 8px;
-}
-#ubicarvehiculo{
-    border-radius: 8px;
-}
-#buscarregistro{
-    border-radius: 8px;
-}
-#historial{
-    border-radius: 8px;
-}
-#informes{
-    border-radius: 8px;
-}
-#cierre{
-    align-items: center;
-    height: 40px;
-    width: 140px;
-    background-color: #d61a1a;
+
+#cierre {
+    background: #d61a1a;
     border-color: #d61a1a;
-    border-radius: 8px;
+    color: white;
+    margin: 20px;
+    justify-content: center;
 }
-.seccion3{
-    text-align: center;
-    align-items: center;
+
+#cierre:hover {
+    background: #c01010;
+}
+
+/* Contenido principal */
+.main-content {
+    min-height: 100vh;
+    transition: all 0.4s ease;
+    padding: 20px;
+    margin-left: 0;
+}
+
+.sidebar.active ~ .main-content {
+    margin-left: 300px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 260px;
+    }
+    .sidebar.active ~ .main-content {
+        margin-left: 260px;
+    }
 }
