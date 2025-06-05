@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <title>Novedades Vehículo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/Estilo_Nuevo_Cliente.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Botón hamburguesa para mostrar/ocultar menú -->
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Menú Lateral -->
+    <nav class="sidebar" id="sidebar">
+        <div class="menu-title">MENÚ PRINCIPAL</div>
+        <div class="menu-grid">
+            <button id="nuevocliente"><i class="fas fa-user-plus"></i> Nuevo Cliente</button>
+            <button id="buscarcliente"><i class="fas fa-search"></i> Buscar Cliente</button>
+            <button id="ubicarvehiculo"><i class="fas fa-car"></i> Ubicar Vehículo</button>
+            <button id="buscarregistro"><i class="fas fa-folder-open"></i> Buscar Registro</button>
+            <button id="historial"><i class="fas fa-history"></i> Historial</button>
+            <button id="informes"><i class="fas fa-chart-bar"></i> Informes</button>
+        </div>
+        <button id="cierre"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content" id="mainContent">
+        <div class="formulario">
+            <div class="titulo">NOVEDADES DEL VEHÍCULO</div>
+            <form action="../api/registros/novedades_vehiculo.php" method="POST">
+                <form id="formNovedades" onsubmit="return false;">
+                    <form id="formNovedades" onsubmit="return false;">
+                        <div class="form-group">
+                            <label>Haga doble clic sobre la imagen para marcar:</label>
+                            <div id="contenedor-imagen" style="width: 100%; max-width: 1000px; position: relative;">
+                                <canvas id="canvas" style="width: 100%; height: auto; display: block;"></canvas>
+                            </div>
+                        </div>
+                    </form>
+                </form>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="module" src="../js/index.js"></script>
+    <script>
+        // Control del menú lateral
+        document.getElementById('menuToggle').addEventListener('click', function () {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            sidebar.classList.toggle('active');
+            mainContent.classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        img.src = '../src/sources/vector_vehiculo.jpg'; // Ajusta la ruta
+
+        // Ajusta el canvas al tamaño del contenedor y redibuja la imagen
+        function resizeCanvas() {
+            const contenedor = document.getElementById('contenedor-imagen');
+            const width = contenedor.clientWidth;
+            const aspectRatio = img.naturalHeight / img.naturalWidth;
+
+            canvas.width = width;
+            canvas.height = width * aspectRatio;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            // Redibuja los puntos guardados si los tuvieras
+            puntos.forEach(p => {
+                drawCircle(p.x * canvas.width, p.y * canvas.height);
+            });
+        }
+
+        // Guarda coordenadas relativas (0 a 1)
+        let puntos = [];
+
+        function drawCircle(x, y) {
+            ctx.beginPath();
+            ctx.arc(x, y, 6, 0, 2 * Math.PI);
+            ctx.fillStyle = 'red';
+            ctx.fill();
+        }
+
+        canvas.addEventListener('dblclick', function (e) {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            drawCircle(x, y);
+
+            // Guardar posición relativa al canvas para mantener al redimensionar
+            puntos.push({
+                x: x / canvas.width,
+                y: y / canvas.height
+            });
+        });
+
+        img.onload = resizeCanvas;
+        window.addEventListener('resize', resizeCanvas);
+    </script>
+</body>
+
+</html>
