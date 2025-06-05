@@ -34,3 +34,11 @@ document.addEventListener("click", (e)=>{
     if(e.target.matches("#buscarregistro")) location.href="buscar_registro.html"
 }
 )
+document.addEventListener("click", (e)=>{
+    if(e.target.matches("#Guardarclientenuevo")) location.href="index.html"
+}
+)
+document.addEventListener("click", (e)=>{
+    if(e.target.matches("#exitoso")) location.href="index.html"
+}
+)

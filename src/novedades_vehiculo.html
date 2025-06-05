@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <!-- Botón hamburguesa para mostrar/ocultar menú -->
+    <!-- Botón hamburguesa -->
     <button class="menu-toggle" id="menuToggle">
         <i class="fas fa-bars"></i>
     </button>
@@ -37,26 +37,46 @@
     <main class="main-content" id="mainContent">
         <div class="formulario">
             <div class="titulo">NOVEDADES DEL VEHÍCULO</div>
-            <form action="../api/registros/novedades_vehiculo.php" method="POST">
-                <form id="formNovedades" onsubmit="return false;">
-                    <form id="formNovedades" onsubmit="return false;">
-                        <div class="form-group">
-                            <label>Haga doble clic sobre la imagen para marcar:</label>
-                            <div id="contenedor-imagen" style="width: 100%; max-width: 1000px; position: relative;">
-                                <canvas id="canvas" style="width: 100%; height: auto; display: block;"></canvas>
-                            </div>
-                        </div>
-                    </form>
-                </form>
+
+            <form id="formNovedades" action="../api/registros/novedades_vehiculo.php" method="POST">
+                <div class="form-group">
+                    <label>Haga doble clic sobre la imagen para marcar las novedades del vehículo:</label>
+                    <div id="contenedor-imagen" style="width: 100%; max-width: 1000px; position: relative;">
+                        <canvas id="canvas" style="width: 100%; height: auto; display: block;"></canvas>
+                    </div>
+                    <!-- Input oculto para la imagen -->
+                    <input type="hidden" name="imagen_canvas" id="imagen_canvas">
+                </div>
+
+                <div class="form-group">
+                    <label>Observaciones:</label>
+                    <input type="text" class="form-control" name="observaciones">
+                </div>
+                <div class="form-group">
+                    <label>Elementos de valor:</label>
+                    <input type="text" class="form-control" name="elementos" id="elementos">
+                </div>
+                <div class="form-group">
+                    <label>Ubicación del vehículo:</label>
+                    <input type="text" class="form-control" name="ubicacion" id="ubicacion">
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" id="regresar">Regresar</button>
+                    <button type="submit" id="Guardarclientenuevo">Guardar</button>
+                </div>
+            </form>
         </div>
     </main>
 
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="module" src="../js/index.js"></script>
+
     <script>
-        // Control del menú lateral
+        // Menú lateral
         document.getElementById('menuToggle').addEventListener('click', function () {
             const sidebar = document.getElementById('sidebar');
             const mainContent = document.getElementById('mainContent');
@@ -64,14 +84,13 @@
             mainContent.classList.toggle('active');
             this.classList.toggle('active');
         });
-    </script>
-    <script>
+
+        // Canvas
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         const img = new Image();
-        img.src = '../src/sources/vector_vehiculo.jpg'; // Ajusta la ruta
+        img.src = '../src/sources/vector_vehiculo.jpg';
 
-        // Ajusta el canvas al tamaño del contenedor y redibuja la imagen
         function resizeCanvas() {
             const contenedor = document.getElementById('contenedor-imagen');
             const width = contenedor.clientWidth;
@@ -83,13 +102,11 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-            // Redibuja los puntos guardados si los tuvieras
             puntos.forEach(p => {
                 drawCircle(p.x * canvas.width, p.y * canvas.height);
             });
         }
 
-        // Guarda coordenadas relativas (0 a 1)
         let puntos = [];
 
         function drawCircle(x, y) {
@@ -105,16 +122,17 @@
             const y = e.clientY - rect.top;
 
             drawCircle(x, y);
-
-            // Guardar posición relativa al canvas para mantener al redimensionar
-            puntos.push({
-                x: x / canvas.width,
-                y: y / canvas.height
-            });
+            puntos.push({ x: x / canvas.width, y: y / canvas.height });
         });
 
         img.onload = resizeCanvas;
         window.addEventListener('resize', resizeCanvas);
+
+        // Capturar imagen en base64 antes de enviar
+        document.getElementById("formNovedades").addEventListener("submit", function () {
+            const imagenData = canvas.toDataURL("image/jpeg", 0.7);
+            document.getElementById("imagen_canvas").value = imagenData;
+        });
     </script>
 </body>
 

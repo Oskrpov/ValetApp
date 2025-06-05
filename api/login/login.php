@@ -19,7 +19,7 @@ try {
 
                 // ✔️ Guardar en sesión
                 $_SESSION['id_funcionario'] = $idUser;
-                $_SESSION['nombre_funcionario'] = $nombres;
+                //$_SESSION['nombre_funcionario'] = $nombres;
 
                 // Devolver respuesta JSON
                 header("HTTP/1.1 200 OK");
