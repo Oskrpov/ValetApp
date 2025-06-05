@@ -23,7 +23,7 @@ document.addEventListener("click", (e)=>{
 }
 )
 document.addEventListener("click", (e)=>{
-    if(e.target.matches("#Continuar")) location.href="novedades_vehiculo.html"
+    if(e.target.matches("#Continuarclientenuevo")) location.href="novedades_vehiculo.html"
 }
 )
 document.addEventListener("click", (e)=>{

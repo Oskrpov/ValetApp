@@ -1,109 +1,3 @@
-/*body{
-    background-image: url(../src/sources/john-matychuk-yvfp5YHWGsc-unsplash.jpg);
-    background-size:cover;
-    background-attachment: fixed;
-}
-.formulario{
-    width: 45%;
-}
-.seccion{
-    display: flex;
-}
-label{
-    text-align: center;
-    border-radius: 4px;
-    background-color: #ffed00;
-    width: 100%;
-    height: 60%;
-}
-.texto{
-    font-family: "Black Ops One", serif;
-    margin-left: 70px;
-    color: black;
-    width: 30%;
-    text-align: left;
-}
-.input1{ 
-    margin-right: 0;
-    width: 70%;
-}
-.inptexto{
-    margin-left: 20px;
-    width: 80%;
-}
-.inpdocumento{
-    margin-left: 20px;
-    width: 35%;
-}
-.inptelefono{
-    margin-left: 20px;
-    width: 35%;
-}
-.inpplaca{
-    margin-left: 20px;
-    width: 25%;
-}
-.boton{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
-}
-button{
-    height: 40px;
-    width: 140px;
-    box-shadow: 4.0px 4.0px 6.0px hsl(0deg 0% 0% / 0.25);
-}
-#Continuar:hover{
-    background: #26a80c; 
-    color: rgb(0, 0, 0);
-}
-#Continuar{
-    border-color: #26c406;
-    background-color: #26c406;
-    font-family: "Black Ops One", serif;
-    border-radius: 8px;
-    margin-left: 10%;
-}
-#regresar:hover{
-    background: #b61616; 
-    color: rgb(0, 0, 0);
-}
-#regresar{
-    background-color: #d61a1a;
-    border-color: #d61a1a;
-    font-family: "Black Ops One", serif;
-    border-radius: 8px;
-    margin-right: 10%;
-}
-.titulo{
-    background-color: #ffed00;
-    border-radius: 8px;
-    text-align: center;
-    font-size: xx-large;
-    font-family: "Black Ops One", serif;
-}
-#buscarplaca{
-    border-color: #26c406;
-    background-color: #26c406;
-    font-family: "Black Ops One", serif;
-    border-radius: 8px;
-    margin-left: 10%;
-}
-#buscarplaca:hover{
-    background: #26a80c; 
-    color: rgb(0, 0, 0);
-}
-#buscarregistro{
-    border-color: #26c406;
-    background-color: #26c406;
-    font-family: "Black Ops One", serif;
-    border-radius: 8px;
-    margin-left: 10%;
-}
-#buscarregistro:hover{
-    background: #26a80c; 
-    color: rgb(0, 0, 0);
-}*/
 /* Estilos generales */
 body {
     font-family: Arial, sans-serif;
@@ -266,6 +160,12 @@ body {
     font-weight: bold;
     color: #fff;
 }
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #fff;
+}
 
 .form-control {
     width: 100%;
@@ -287,7 +187,34 @@ body {
     justify-content: space-between;
     margin-top: 30px;
 }
-#Continuar {
+#Continuarclientenuevo {
+    font-weight: bold;
+    background-color: #00ff15;
+    border-color: #00ff15;
+    color: #000;
+    border-radius: 6px;
+    height: 45px;
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
+}
+#buscador {
+    font-weight: bold;
+    background-color: #00ff15;
+    border-color: #00ff15;
+    color: #000;
+    border-radius: 6px;
+    height: 45px;
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
+}
+#buscarregistro1 {
+    font-weight: bold;
+    background-color: #00ff15;
+    border-color: #00ff15;
+    color: #000;
+    border-radius: 6px;
+    height: 45px;
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
+}
+#buscarplaca {
     font-weight: bold;
     background-color: #00ff15;
     border-color: #00ff15;
@@ -306,7 +233,7 @@ body {
     box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
 }
 
-#Continuar:hover {
+#Continuarclientenuevo:hover {
     background-color: #67f508;
     transform: translateY(-2px);
 }
