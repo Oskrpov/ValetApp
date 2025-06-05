@@ -45,12 +45,12 @@ $elementos = $_POST['elementos'] ?? '';
 $observaciones = $_POST['observaciones'] ?? '';
 $imagen_base64 = $_POST['imagen_canvas'] ?? '';
 
-if (!$ubicacion || !$elementos || !$imagen_base64) {
+/*if (!$ubicacion || !$elementos || !$imagen_base64) {
     die("Faltan datos obligatorios.");
-}
+}*/
 
 // Guardar imagen en el servidor
-$directorio = '../src/sources/img_novedades/';
+$directorio = '../../src/sources/img_novedades/';
 if (!file_exists($directorio)) {
     mkdir($directorio, 0777, true);
 }
