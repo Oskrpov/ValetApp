@@ -39,15 +39,11 @@ if (!$cliente) {
 
 $placa = $cliente['placa_usu'];
 
-// Obtener y validar datos del formulario
+// Obtener datos del formulario
 $ubicacion = $_POST['ubicacion'] ?? '';
 $elementos = $_POST['elementos'] ?? '';
 $observaciones = $_POST['observaciones'] ?? '';
 $imagen_base64 = $_POST['imagen_canvas'] ?? '';
-
-/*if (!$ubicacion || !$elementos || !$imagen_base64) {
-    die("Faltan datos obligatorios.");
-}*/
 
 // Guardar imagen en el servidor
 $directorio = '../../src/sources/img_novedades/';
@@ -81,6 +77,66 @@ $stmtInsert->execute([
     $idCliente
 ]);
 
-//echo "Registro guardado correctamente.";
-header("Location: ../../src/registroexitoso.html"); // Puedes redirigir si lo necesitas
+// Mostrar modal confirmando éxito con fondo semi-transparente y fuente personalizada
+echo '
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro exitoso</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
+
+        body {
+            font-family: "Black Ops One", cursive, Arial, sans-serif;
+            margin: 0; padding: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal {
+            position: fixed;
+            top: 10vh;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffed00;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            text-align: center;
+            z-index: 9999;
+            color: #2c3e50;
+            max-width: 400px;
+            width: 80%;
+        }
+        .modal h2 {
+            margin-bottom: 20px;
+        }
+        .modal button {
+        font-family: "Black Ops One", cursive, Arial, sans-serif;
+    font-weight: bold;
+    background-color: #53c00a;
+    border-color: #53c00a;
+    color: #2c3e50;
+    border-radius: 6px;
+    height: 45px;
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
+        }
+        .modal button:hover {
+            background-color: #00ff15;
+        }
+    </style>
+</head>
+<body>
+    <div class="modal">
+        <h2>Registro guardado exitosamente</h2>
+        <button onclick="irAlMenu()">Aceptar</button>
+    </div>
+
+    <script>
+        function irAlMenu() {
+            window.location.href = "../../src/index.html";
+        }
+    </script>
+</body>
+</html>';
 exit;
+?>

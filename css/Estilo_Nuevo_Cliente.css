@@ -189,8 +189,8 @@ label {
 }
 #Continuarclientenuevo {
     font-weight: bold;
-    background-color: #00ff15;
-    border-color: #00ff15;
+    background-color: #53c00a;
+    border-color: #53c00a;
     color: #000;
     border-radius: 6px;
     height: 45px;
@@ -252,7 +252,7 @@ label {
 }
 
 #Continuarclientenuevo:hover {
-    background-color: #67f508;
+    background-color: #00ff15;
     transform: translateY(-2px);
 }
 #regresar:hover {
