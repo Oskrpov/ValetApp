@@ -65,13 +65,14 @@ if ($imagen_binaria === false || !file_put_contents($rutaArchivo, $imagen_binari
 
 // Insertar en la tabla tb_registro
 $fechaHora = date('Y-m-d H:i:s');
-$stmtInsert = $pdo->prepare("INSERT INTO tb_registro (Placa, imagen_novedad, Ubicacion_veh, Objet_Valor, Entrada, Id_Cliente_FK)
-    VALUES (?, ?, ?, ?, ?, ?)");
+$stmtInsert = $pdo->prepare("INSERT INTO tb_registro (Placa, imagen_novedad, Ubicacion_veh, observaciones, Objet_Valor, Entrada, Id_Cliente_FK)
+    VALUES (?, ?, ?, ?, ?, ?, ?)");
 
 $stmtInsert->execute([
     $placa,
     $rutaParaDB,
     $ubicacion,
+    $observaciones,
     $elementos,
     $fechaHora,
     $idCliente

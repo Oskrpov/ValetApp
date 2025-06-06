@@ -241,6 +241,15 @@ label {
     height: 45px;
     box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
 }
+#guardarPlaca {
+    font-weight: bold;
+    background-color: #00ff15;
+    border-color: #00ff15;
+    color: #000;
+    border-radius: 6px;
+    height: 45px;
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
+}
 #regresar {
     font-weight: bold;
     background-color: #d60d0d;

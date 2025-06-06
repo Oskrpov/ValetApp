@@ -37,7 +37,7 @@ if (isset($_POST['documento'])) {
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="C:\xampp\htdocs\VP 2/css/Estilo_Nuevo_Cliente.css">
+            <link rel="stylesheet" href="../../css/Estilo_Nuevo_Cliente.css">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         </head>
@@ -92,7 +92,7 @@ if (isset($_POST['documento'])) {
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-            <script type="module" src="C:\xampp\htdocs\VP 2/js/index.js"></script>
+            <script type="module" src="../../js/index.js"></script>
             <script>
                 document.getElementById('menuToggle').addEventListener('click', function () {
                     const sidebar = document.getElementById('sidebar');
