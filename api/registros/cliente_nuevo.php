@@ -31,15 +31,6 @@ $idFuncionario = $_SESSION['id_funcionario'];
 // Preparar y ejecutar la inserción
 $stmt = $conn->prepare("INSERT INTO tbcliente (Nombres_Usu, Apellidos_Usu, Identificacion_Usu, Telefono_usu, placa_usu, Id_funcionario_FK) VALUES (?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("sssssi", $nombres, $apellidos, $documento, $telefono, $placa, $idFuncionario);
-
-/*if ($stmt->execute()) {
-    // ✅ GUARDAR EL ID DEL CLIENTE EN LA SESIÓN
-    $_SESSION['IdUsuario'] = $stmt->insert_id;
-    header("../../src/novedades_vehiculo.html");
-   // echo "Cliente registrado correctamente. ID guardado en sesión."; // <-- CAMBIO AQUÍ
-} else {
-    echo "Error al registrar cliente: " . $stmt->error;
-}*/
 if ($stmt->execute()) {
     // ✅ GUARDAR EL ID DEL CLIENTE EN LA SESIÓN
     $_SESSION['IdUsuario'] = $stmt->insert_id;
