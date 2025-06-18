@@ -44,7 +44,10 @@
                     <div id="contenedor-imagen" style="width: 100%; max-width: 1000px; position: relative;">
                         <canvas id="canvas" style="width: 100%; height: auto; display: block;"></canvas>
                     </div>
-                    <!-- Input oculto para la imagen -->
+                    <small class="form-text aviso-informativo">
+                        🔴 Doble clic para agregar un punto rojo. Si haces doble clic sobre un punto rojo existente, se
+                        eliminará.
+                    </small>
                     <input type="hidden" name="imagen_canvas" id="imagen_canvas">
                 </div>
 
@@ -54,11 +57,12 @@
                 </div>
                 <div class="form-group">
                     <label>Elementos de valor:</label>
-                    <input type="text" class="form-control" name="elementos" id="elementos" placeholder="Sin elementos de valor">
+                    <input type="text" class="form-control" name="elementos" id="elementos"
+                        placeholder="Sin elementos de valor">
                 </div>
                 <div class="form-group">
                     <label>Ubicación del vehículo:</label>
-                    <input type="text" class="form-control" name="ubicacion" id="ubicacion" placeholder="Sotano 1">
+                    <input type="text" class="form-control" name="ubicacion" id="ubicacion" placeholder="Sótano 1">
                 </div>
 
                 <div class="form-actions">
@@ -91,22 +95,6 @@
         const img = new Image();
         img.src = '../src/sources/vector_vehiculo.jpg';
 
-        function resizeCanvas() {
-            const contenedor = document.getElementById('contenedor-imagen');
-            const width = contenedor.clientWidth;
-            const aspectRatio = img.naturalHeight / img.naturalWidth;
-
-            canvas.width = width;
-            canvas.height = width * aspectRatio;
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-            puntos.forEach(p => {
-                drawCircle(p.x * canvas.width, p.y * canvas.height);
-            });
-        }
-
         let puntos = [];
 
         function drawCircle(x, y) {
@@ -116,13 +104,44 @@
             ctx.fill();
         }
 
+        function redrawCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            puntos.forEach(p => {
+                drawCircle(p.x * canvas.width, p.y * canvas.height);
+            });
+        }
+
+        function resizeCanvas() {
+            const contenedor = document.getElementById('contenedor-imagen');
+            const width = contenedor.clientWidth;
+            const aspectRatio = img.naturalHeight / img.naturalWidth;
+
+            canvas.width = width;
+            canvas.height = width * aspectRatio;
+
+            redrawCanvas();
+        }
+
         canvas.addEventListener('dblclick', function (e) {
             const rect = canvas.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
 
-            drawCircle(x, y);
-            puntos.push({ x: x / canvas.width, y: y / canvas.height });
+            const radio = 10;
+            const index = puntos.findIndex(p => {
+                const px = p.x * canvas.width;
+                const py = p.y * canvas.height;
+                return Math.hypot(px - x, py - y) < radio;
+            });
+
+            if (index >= 0) {
+                puntos.splice(index, 1); // Eliminar punto
+            } else {
+                puntos.push({ x: x / canvas.width, y: y / canvas.height }); // Agregar nuevo punto
+            }
+
+            redrawCanvas();
         });
 
         img.onload = resizeCanvas;
