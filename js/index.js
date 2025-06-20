@@ -2,7 +2,6 @@ import {enivarAjax} from "./tools.js";
 
 document.addEventListener("click", (e)=>{
     if(e.target.matches("#nuevocliente")) location.href="nuevo_cliente.html"
-    if(e.target.matches("#buscarcliente")) location.href="busqueda_cliente.html"
 }
 )
 document.addEventListener("submit", (e)=>{
@@ -33,10 +32,6 @@ document.addEventListener("submit", (e)=>{
             }
         });
     }
-}
-)
-document.addEventListener("click", (e)=>{
-    if(e.target.matches("#botonbuscar")) location.href="datos_cliente.html"
 }
 )
 document.addEventListener("click", (e)=>{

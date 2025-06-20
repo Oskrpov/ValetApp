@@ -1,9 +1,9 @@
 <?php
 require_once '../configdb/db.php';
-session_start(); // ← NECESARIO para usar $_SESSION
+session_start();
 
 header("Access-Control-Allow-Origin: *");
-header("content-Type: application/json");
+header("Content-Type: application/json");
 
 try {
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -11,28 +11,37 @@ try {
             $base = new Db();
             $conn = $base->conectar();
             $documento = htmlspecialchars($_GET['documento']);
-            //var_dump($documento); // Para depurar, eliminar en producción
-            try {
-                $sql = "SELECT IdUsuario, Nombres_Usu, Apellidos_Usu, Identificacion_Usu FROM tbcliente WHERE Identificacion_Usu = :ident LIMIT 1";
-                $stmt = $conn->prepare($sql);
-                $stmt->bindvalue(':ident', $documento, PDO::PARAM_STR);
-                if ($stmt->execute()) {
-                 //   return $stmt->fetchALL(PDO::FETCH_ASSOC);
-                 header("HTTP/1.1 200 OK");
-                echo json_encode([
-                    "code" => 200,
-                    "datos" => $stmt->fetchALL(PDO::FETCH_ASSOC),
-                    "msg" => "Consulta exitosa"
-                ]);
+
+            $sql = "SELECT IdUsuario, Nombres_Usu, Apellidos_Usu, Identificacion_Usu FROM tbcliente WHERE Identificacion_Usu = :ident LIMIT 1";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindValue(':ident', $documento, PDO::PARAM_STR);
+
+            if ($stmt->execute()) {
+                $datos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                if (count($datos) > 0) {
+                    // Guardar en sesión el IdUsuario
+                    $_SESSION['IdUsuario'] = $datos[0]['IdUsuario'];
+
+                    header("HTTP/1.1 200 OK");
+                    echo json_encode([
+                        "code" => 200,
+                        "datos" => $datos,
+                        "msg" => "Consulta exitosa"
+                    ]);
                 } else {
-                    return false;
+                    header("HTTP/1.1 404 Not Found");
+                    echo json_encode([
+                        "code" => 404,
+                        "msg" => "Cliente no encontrado"
+                    ]);
                 }
-            } catch (Exception $e) {
-                throw new Exception("Error en la consulta: " . $e->getMessage());
+            } else {
+                throw new Exception("Error al ejecutar la consulta.");
             }
         } else {
             header("HTTP/1.1 400 Bad Request");
-            echo json_encode(["code" => 400, "msg" => "Solicitud incorrecta por parte del cliente"]);
+            echo json_encode(["code" => 400, "msg" => "Solicitud incorrecta. Falta el documento."]);
         }
     }
 } catch (Exception $e) {

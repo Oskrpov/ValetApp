@@ -21,29 +21,23 @@ try {
 // Iniciar sesión
 session_start();
 
-// Obtener ID del cliente desde la sesión (debe haberse guardado antes)
+// Obtener ID del cliente desde la sesión
 $idCliente = $_SESSION['IdUsuario'] ?? null;
 
 if (!$idCliente) {
     die("No se encontró el ID del cliente en sesión.");
 }
 
-// Buscar la placa asociada al cliente en tbcliente
-$stmt = $pdo->prepare("SELECT placa_usu FROM tbcliente WHERE IdUsuario = ?");
-$stmt->execute([$idCliente]);
-$cliente = $stmt->fetch();
-
-if (!$cliente) {
-    die("No se encontró el cliente con el ID proporcionado.");
-}
-
-$placa = $cliente['placa_usu'];
-
 // Obtener datos del formulario
+$placa = $_POST['Placa'] ?? '';
 $ubicacion = $_POST['ubicacion'] ?? '';
 $elementos = $_POST['elementos'] ?? '';
 $observaciones = $_POST['observaciones'] ?? '';
 $imagen_base64 = $_POST['imagen_canvas'] ?? '';
+
+if (empty($placa)) {
+    die("La placa es obligatoria.");
+}
 
 // Guardar imagen en el servidor
 $directorio = '../../src/sources/img_novedades/';
@@ -78,7 +72,7 @@ $stmtInsert->execute([
     $idCliente
 ]);
 
-// Mostrar modal confirmando éxito con fondo semi-transparente y fuente personalizada
+// Mostrar modal confirmando éxito
 echo '
 <!DOCTYPE html>
 <html lang="es">
@@ -112,14 +106,14 @@ echo '
             margin-bottom: 20px;
         }
         .modal button {
-        font-family: "Black Ops One", cursive, Arial, sans-serif;
-    font-weight: bold;
-    background-color: #53c00a;
-    border-color: #53c00a;
-    color: #2c3e50;
-    border-radius: 6px;
-    height: 45px;
-    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
+            font-family: "Black Ops One", cursive, Arial, sans-serif;
+            font-weight: bold;
+            background-color: #53c00a;
+            border-color: #53c00a;
+            color: #2c3e50;
+            border-radius: 6px;
+            height: 45px;
+            box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
         }
         .modal button:hover {
             background-color: #00ff15;
