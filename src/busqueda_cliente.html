@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <title>Busqueda de Cliente</title>
   <meta charset="utf-8">
@@ -12,6 +13,7 @@
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
   <!-- Botón hamburguesa para mostrar/ocultar menú -->
   <button class="menu-toggle" id="menuToggle">
@@ -37,16 +39,21 @@
       <div class="titulo">BUSCAR CLIENTE</div>
 
       <!-- Aquí el formulario que envía el dato a buscar_cliente.php -->
-     <form id ="form_busqueda">
+      <form id="form_busqueda">
         <div class="form-group">
           <label>DOCUMENTO</label>
-          <input type="text" class="form-control" name="documento" required>
+          <input type="text" class="form-control" name="documento" id="documento" required>
         </div>
         <div id="infocliente">
         </div>
+
         <div class="form-actions">
           <button type="button" id="regresar">Regresar</button>
-          <button type="submit" id="buscador">Continuar</button>
+          <button type="submit" id="buscador">Buscar</button>
+          <!-- Nuevos botones ocultos al inicio -->
+          <button type="button" id="editar" style="display:none;">Editar</button>
+          <button type="button" id="eliminar" style="display:none;">Eliminar</button>
+          <button type="button" id="continuar" style="display:none;">Continuar</button>
         </div>
       </form>
 
@@ -54,7 +61,8 @@
   </main>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
   <script type="module" src="../js/index.js"></script>
   <script>
