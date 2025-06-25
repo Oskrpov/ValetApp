@@ -1,5 +1,6 @@
 <?php
 include_once 'llaves.php';
+date_default_timezone_set('America/Bogota');
 class Db{
     private $servidor;
     private $base;
