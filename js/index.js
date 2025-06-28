@@ -171,6 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const buscarBtn = document.getElementById("buscarregistro1");
   const seccionNovedades = document.getElementById("novedadesVehiculo");
+  const asignarBtn = document.getElementById("asignarSalida");
 
   if (buscarBtn && seccionNovedades) {
     buscarBtn.addEventListener("click", async () => {
@@ -195,7 +196,6 @@ document.addEventListener("DOMContentLoaded", () => {
           document.getElementById("documento").value = cliente.Identificacion_Usu;
           document.getElementById("nombres").readOnly = true;
           document.getElementById("apellidos").readOnly = true;
-          // Documento se mantiene editable
 
           const idCliente = cliente.IdUsuario;
 
@@ -237,4 +237,44 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // Botón Asignar Salida
+  if (asignarBtn) {
+    asignarBtn.addEventListener("click", async () => {
+      const documento = document.getElementById("documento").value.trim();
+
+      if (!documento) {
+        alert("Por favor ingresa el documento para identificar al cliente.");
+        return;
+      }
+
+      try {
+        const respuestaCliente = await fetch(`../api/registros/buscar_clientemod.php?documento=${encodeURIComponent(documento)}`);
+        const datosCliente = await respuestaCliente.json();
+
+        if (datosCliente.code === 200 && datosCliente.datos.length > 0) {
+          const idCliente = datosCliente.datos[0].IdUsuario;
+
+          const confirmar = confirm("¿Estás seguro de asignar la hora de salida?");
+          if (!confirmar) return;
+
+          const respuesta = await fetch(`../api/registros/asignar_salida.php?id_cliente=${encodeURIComponent(idCliente)}`);
+          const resultado = await respuesta.json();
+
+          if (resultado.code === 200) {
+            document.getElementById("salida").value = resultado.salida || "Registrado";
+            alert("Hora de salida asignada correctamente.");
+          } else {
+            alert("No se pudo asignar la salida: " + resultado.msg);
+          }
+        } else {
+          alert("Cliente no encontrado.");
+        }
+      } catch (error) {
+        console.error("Error al asignar salida:", error);
+        alert("Ocurrió un error al procesar la solicitud.");
+      }
+    });
+  }
 });
+

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es">
+
 <head>
     <title>Cliente Nuevo</title>
     <meta charset="utf-8">
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Botón hamburguesa para mostrar/ocultar menú -->
     <button class="menu-toggle" id="menuToggle">
@@ -23,7 +25,6 @@
         <div class="menu-grid">
             <button id="nuevocliente"><i class="fas fa-user-plus"></i> Nuevo Cliente</button>
             <button id="buscarcliente"><i class="fas fa-search"></i> Buscar Cliente</button>
-            <button id="ubicarvehiculo"><i class="fas fa-car"></i> Ubicar Vehículo</button>
             <button id="buscarregistro"><i class="fas fa-folder-open"></i> Buscar Registro</button>
             <button id="historial"><i class="fas fa-history"></i> Historial</button>
             <button id="informes"><i class="fas fa-chart-bar"></i> Informes</button>
@@ -41,26 +42,26 @@
                         <label>NOMBRES</label>
                         <input type="text" class="form-control" name="nombres" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label>APELLIDOS</label>
                         <input type="text" class="form-control" name="apellidos" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label>DOCUMENTO</label>
                         <input type="text" class="form-control" name="documento" required>
                     </div>
-                    
+
                     <div class="form-group">
                         <label>TELEFONO</label>
                         <input type="text" class="form-control" name="telefono" required>
                     </div>
                 </div>
-                
+
                 <div class="form-actions">
                     <button type="button" id="regresar">Regresar</button>
-                    <button type="submit" id="Continuarclientenuevo" >Continuar</button>
+                    <button type="submit" id="Continuarclientenuevo">Continuar</button>
                 </div>
             </form>
         </div>
@@ -72,7 +73,7 @@
     <script type="module" src="../js/index.js"></script>
     <script>
         // Control del menú lateral
-        document.getElementById('menuToggle').addEventListener('click', function() {
+        document.getElementById('menuToggle').addEventListener('click', function () {
             const sidebar = document.getElementById('sidebar');
             const mainContent = document.getElementById('mainContent');
             sidebar.classList.toggle('active');
@@ -81,4 +82,5 @@
         });
     </script>
 </body>
+
 </html>

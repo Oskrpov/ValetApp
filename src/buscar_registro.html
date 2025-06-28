@@ -25,7 +25,6 @@
     <div class="menu-grid">
       <button id="nuevocliente"><i class="fas fa-user-plus"></i> Nuevo Cliente</button>
       <button id="buscarcliente"><i class="fas fa-search"></i> Buscar Cliente</button>
-      <button id="ubicarvehiculo"><i class="fas fa-car"></i> Ubicar Vehículo</button>
       <button id="buscarregistro"><i class="fas fa-folder-open"></i> Buscar Registro</button>
       <button id="historial"><i class="fas fa-history"></i> Historial</button>
       <button id="informes"><i class="fas fa-chart-bar"></i> Informes</button>
@@ -53,6 +52,7 @@
       </div>
       <div class="form-actions">
         <button type="button" id="regresar">REGRESAR</button>
+        <button type="button" id="asignarSalida">ASIGNAR SALIDA</button>
         <button type="submit" id="buscarregistro1">BUSCAR</button>
       </div>
     </div>
@@ -89,7 +89,7 @@
           <label>Imagen registrada:</label>
           <div style="text-align: center;">
             <img id="imagenNovedad" src="" alt="Imagen de la novedad"
-                 style="max-width: 100%; max-height: 400px; border: 1px solid #ccc; border-radius: 8px; padding: 5px; cursor: pointer;">
+              style="max-width: 100%; max-height: 400px; border: 1px solid #ccc; border-radius: 8px; padding: 5px; cursor: pointer;">
           </div>
         </div>
       </form>
@@ -97,7 +97,8 @@
   </main>
 
   <!-- Modal para ampliar imagen -->
-  <div class="modal fade" id="modalImagen" tabindex="-1" role="dialog" aria-labelledby="modalImagenLabel" aria-hidden="true">
+  <div class="modal fade" id="modalImagen" tabindex="-1" role="dialog" aria-labelledby="modalImagenLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -107,7 +108,8 @@
           </button>
         </div>
         <div class="modal-body text-center">
-          <img id="imagenAmpliada" src="" alt="Imagen ampliada" style="max-width: 100%; max-height: 80vh; border-radius: 8px;">
+          <img id="imagenAmpliada" src="" alt="Imagen ampliada"
+            style="max-width: 100%; max-height: 80vh; border-radius: 8px;">
         </div>
       </div>
     </div>
@@ -146,4 +148,5 @@
     });
   </script>
 </body>
+
 </html>
