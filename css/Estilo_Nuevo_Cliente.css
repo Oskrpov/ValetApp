@@ -241,19 +241,10 @@ label {
     height: 45px;
     box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
 }
-#guardarPlaca {
-    font-weight: bold;
-    background-color: #00ff15;
-    border-color: #00ff15;
-    color: #000;
-    border-radius: 6px;
-    height: 45px;
-    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
-}
 #regresar {
     font-weight: bold;
-    background-color: #d60d0d;
-    border-color: #d60d0d;
+    background-color: #f39c12;
+    border-color: #f39c12;
     color: #000;
     border-radius: 6px;
     height: 45px;
@@ -265,7 +256,7 @@ label {
     transform: translateY(-2px);
 }
 #regresar:hover {
-    background-color: #ff0000;
+    background-color: #d68910;
     transform: translateY(-2px);
 }
 
@@ -304,4 +295,43 @@ label {
 }
 .aviso-informativo {
     color: white;
+}
+#continuar {
+    font-weight: bold;
+    background-color: #27ae60;
+    border-color: #27ae60;
+    color: #000;
+    border-radius: 6px;
+    height: 45px;
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
+}
+#continuar:hover {
+    background-color: #1e8449;
+    transform: translateY(-2px);
+}
+#editar {
+    font-weight: bold;
+    background-color: #2980b9;
+    border-color: #2980b9;
+    color: #000;
+    border-radius: 6px;
+    height: 45px;
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
+}
+#editar:hover {
+    background-color: #21618c;
+    transform: translateY(-2px);
+}
+#eliminar {
+    font-weight: bold;
+    background-color: #c0392b;
+    border-color: #c0392b;
+    color: #000;
+    border-radius: 6px;
+    height: 45px;
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
+}
+#eliminar:hover {
+    background-color: #922b21;
+    transform: translateY(-2px);
 }

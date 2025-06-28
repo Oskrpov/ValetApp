@@ -1,8 +1,8 @@
 import { enivarAjax } from "./tools.js";
 
 document.addEventListener("click", (e) => {
-    if (e.target.matches("#nuevocliente")) location.href = "nuevo_cliente.html"
-    if (e.target.matches("#buscarcliente")) location.href = "busqueda_cliente.html"
+  if (e.target.matches("#nuevocliente")) location.href = "nuevo_cliente.html"
+  if (e.target.matches("#buscarcliente")) location.href = "busqueda_cliente.html"
 }
 )
 let modoEdicion = false;
@@ -36,6 +36,39 @@ document.addEventListener("submit", (e) => {
           document.getElementById("eliminar").style.display = "inline-block";
           document.getElementById("continuar").style.display = "inline-block";
           document.getElementById("buscador").style.display = "none";
+
+          // Listener para el botón Eliminar
+          document.getElementById("eliminar").onclick = async function () {
+            const confirmacion = confirm("¿Estás seguro de que deseas eliminar este cliente y todos sus registros?");
+            if (!confirmacion) return;
+
+            const idCliente = resp.datos[0].IdUsuario;
+
+            try {
+              const respuesta = await fetch("../api/registros/eliminar_cliente.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id_cliente: idCliente })
+              });
+
+              const resultado = await respuesta.json();
+
+              if (resultado.status === "ok") {
+                alert("Cliente y registros eliminados correctamente");
+                document.getElementById("form_busqueda").reset();
+                document.getElementById("infocliente").innerHTML = "";
+                document.getElementById("editar").style.display = "none";
+                document.getElementById("eliminar").style.display = "none";
+                document.getElementById("continuar").style.display = "none";
+                document.getElementById("buscador").style.display = "inline-block";
+              } else {
+                alert("Error: " + resultado.mensaje);
+              }
+            } catch (error) {
+              console.error("Error al eliminar:", error);
+              alert("Hubo un problema al intentar eliminar.");
+            }
+          };
 
           // Ahora que los inputs existen, agregamos el listener de editar
           modoEdicion = false; // global o definida arriba
@@ -127,38 +160,38 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("click", (e) => {
-    if (e.target.matches("#botonbuscar")) location.href = "datos_cliente.html"
+  if (e.target.matches("#botonbuscar")) location.href = "datos_cliente.html"
 }
 )
 document.addEventListener("click", (e) => {
-    if (e.target.matches("#continuarnovedades")) location.href = "datos_cliente.html"
+  if (e.target.matches("#continuarnovedades")) location.href = "datos_cliente.html"
 }
 )
 document.addEventListener("click", (e) => {
-    if (e.target.matches("#cierre")) location.href = "inicio_sesion.html"
+  if (e.target.matches("#cierre")) location.href = "inicio_sesion.html"
 }
 )
 document.addEventListener("click", (e) => {
-    if (e.target.matches("#regresar")) location.href = "index.html"
+  if (e.target.matches("#regresar")) location.href = "index.html"
 }
 )
 document.addEventListener("click", (e) => {
-    if (e.target.matches("#Continuarclientenuevo")) location.href = "novedades_vehiculo.html"
+  if (e.target.matches("#Continuarclientenuevo")) location.href = "novedades_vehiculo.html"
 }
 )
 document.addEventListener("click", (e) => {
-    if (e.target.matches("#ubicarvehiculo")) location.href = "busqueda_vehiculo.html"
+  if (e.target.matches("#ubicarvehiculo")) location.href = "busqueda_vehiculo.html"
 }
 )
 document.addEventListener("click", (e) => {
-    if (e.target.matches("#buscarregistro")) location.href = "buscar_registro.html"
+  if (e.target.matches("#buscarregistro")) location.href = "buscar_registro.html"
 }
 )
 document.addEventListener("click", (e) => {
-    if (e.target.matches("#Guardarclientenuevo")) location.href = "index.html"
+  if (e.target.matches("#Guardarclientenuevo")) location.href = "index.html"
 }
 )
 document.addEventListener("click", (e) => {
-    if (e.target.matches("#exitoso")) location.href = "index.html"
+  if (e.target.matches("#exitoso")) location.href = "index.html"
 }
 )
