@@ -3,6 +3,15 @@ import { enivarAjax } from "./tools.js";
 document.addEventListener("click", (e) => {
   if (e.target.matches("#nuevocliente")) location.href = "nuevo_cliente.html"
   if (e.target.matches("#buscarcliente")) location.href = "busqueda_cliente.html"
+  if (e.target.matches("#botonbuscar")) location.href = "datos_cliente.html"
+  if (e.target.matches("#continuarnovedades")) location.href = "datos_cliente.html"
+  if (e.target.matches("#cierre")) location.href = "inicio_sesion.html"
+  if (e.target.matches("#regresar")) location.href = "index.html"
+  if (e.target.matches("#Continuarclientenuevo")) location.href = "novedades_vehiculo.html"
+  if (e.target.matches("#ubicarvehiculo")) location.href = "busqueda_vehiculo.html"
+  if (e.target.matches("#buscarregistro")) location.href = "buscar_registro.html"
+  if (e.target.matches("#Guardarclientenuevo")) location.href = "index.html"
+  if (e.target.matches("#exitoso")) location.href = "index.html"
 }
 )
 let modoEdicion = false;
@@ -70,7 +79,7 @@ document.addEventListener("submit", (e) => {
             }
           };
 
-          // Ahora que los inputs existen, agregamos el listener de editar
+          // listener de editar
           modoEdicion = false; // global o definida arriba
           document.getElementById("editar").onclick = async function () {
             const nombresInput = document.getElementById("nombres");
@@ -158,40 +167,74 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+//consulta de registro
+document.addEventListener("DOMContentLoaded", () => {
+  const buscarBtn = document.getElementById("buscarregistro1");
+  const seccionNovedades = document.getElementById("novedadesVehiculo");
 
-document.addEventListener("click", (e) => {
-  if (e.target.matches("#botonbuscar")) location.href = "datos_cliente.html"
-}
-)
-document.addEventListener("click", (e) => {
-  if (e.target.matches("#continuarnovedades")) location.href = "datos_cliente.html"
-}
-)
-document.addEventListener("click", (e) => {
-  if (e.target.matches("#cierre")) location.href = "inicio_sesion.html"
-}
-)
-document.addEventListener("click", (e) => {
-  if (e.target.matches("#regresar")) location.href = "index.html"
-}
-)
-document.addEventListener("click", (e) => {
-  if (e.target.matches("#Continuarclientenuevo")) location.href = "novedades_vehiculo.html"
-}
-)
-document.addEventListener("click", (e) => {
-  if (e.target.matches("#ubicarvehiculo")) location.href = "busqueda_vehiculo.html"
-}
-)
-document.addEventListener("click", (e) => {
-  if (e.target.matches("#buscarregistro")) location.href = "buscar_registro.html"
-}
-)
-document.addEventListener("click", (e) => {
-  if (e.target.matches("#Guardarclientenuevo")) location.href = "index.html"
-}
-)
-document.addEventListener("click", (e) => {
-  if (e.target.matches("#exitoso")) location.href = "index.html"
-}
-)
+  if (buscarBtn && seccionNovedades) {
+    buscarBtn.addEventListener("click", async () => {
+      const documentoInput = document.getElementById("documento");
+      const documento = documentoInput?.value.trim();
+
+      if (!documento) {
+        alert("Por favor ingresa un número de documento.");
+        return;
+      }
+
+      try {
+        const respuesta = await fetch(`../api/registros/buscar_clientemod.php?documento=${encodeURIComponent(documento)}`);
+        const resultado = await respuesta.json();
+
+        if (resultado.code === 200 && resultado.datos.length > 0) {
+          const cliente = resultado.datos[0];
+
+          // Rellenar y bloquear campos
+          document.getElementById("nombres").value = cliente.Nombres_Usu;
+          document.getElementById("apellidos").value = cliente.Apellidos_Usu;
+          document.getElementById("documento").value = cliente.Identificacion_Usu;
+          document.getElementById("nombres").readOnly = true;
+          document.getElementById("apellidos").readOnly = true;
+          // Documento se mantiene editable
+
+          const idCliente = cliente.IdUsuario;
+
+          // Buscar novedades del vehículo
+          try {
+            const respuestaNovedades = await fetch(`../api/registros/buscar_novedades.php?id_cliente=${encodeURIComponent(idCliente)}`);
+            const novedades = await respuestaNovedades.json();
+
+            if (novedades.code === 200 && novedades.datos.length > 0) {
+              const novedad = novedades.datos[0];
+
+              document.getElementById("observaciones").value = novedad.observaciones || "Sin observaciones";
+              document.getElementById("elementos").value = novedad.Objet_Valor || "Sin elementos";
+              document.getElementById("ubicacion").value = novedad.Ubicacion_veh || "Sin ubicación";
+              document.getElementById("placaNovedad").value = novedad.Placa || "Sin placa";
+              document.getElementById("entrada").value = novedad.Entrada || "Sin registro";
+              document.getElementById("salida").value = novedad.Salida || "Sin registro";
+              document.getElementById("imagenNovedad").src = novedad.Imagen_novedad || "";
+
+              seccionNovedades.style.display = "block";
+              seccionNovedades.scrollIntoView({ behavior: "smooth" });
+            } else {
+              alert("No se encontraron novedades para este cliente.");
+              seccionNovedades.style.display = "none";
+            }
+          } catch (error) {
+            console.error("Error al buscar novedades:", error);
+            alert("Ocurrió un error al buscar las novedades del vehículo.");
+            seccionNovedades.style.display = "none";
+          }
+        } else {
+          alert("Cliente no encontrado.");
+          seccionNovedades.style.display = "none";
+        }
+      } catch (error) {
+        console.error("Error al buscar cliente:", error);
+        alert("Ocurrió un error al buscar el cliente.");
+        seccionNovedades.style.display = "none";
+      }
+    });
+  }
+});

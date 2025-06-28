@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("America/Bogota");
 session_start();
 
 // Conexión a la base de datos (puedes poner tus propios datos si son diferentes)

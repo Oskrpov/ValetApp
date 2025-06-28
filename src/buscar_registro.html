@@ -1,73 +1,149 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <title>Busqueda de registro</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/Estilo_Nuevo_Cliente.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  </head>
-  <body>
-       <!-- Botón hamburguesa para mostrar/ocultar menú -->
-    <button class="menu-toggle" id="menuToggle">
-        <i class="fas fa-bars"></i>
-    </button>
 
-    <!-- Menú Lateral -->
-    <nav class="sidebar" id="sidebar">
-        <div class="menu-title">MENÚ PRINCIPAL</div>
-        <div class="menu-grid">
-            <button id="nuevocliente"><i class="fas fa-user-plus"></i> Nuevo Cliente</button>
-            <button id="buscarcliente"><i class="fas fa-search"></i> Buscar Cliente</button>
-            <button id="ubicarvehiculo"><i class="fas fa-car"></i> Ubicar Vehículo</button>
-            <button id="buscarregistro"><i class="fas fa-folder-open"></i> Buscar Registro</button>
-            <button id="historial"><i class="fas fa-history"></i> Historial</button>
-            <button id="informes"><i class="fas fa-chart-bar"></i> Informes</button>
+<head>
+  <title>Busqueda de registro</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/Estilo_Nuevo_Cliente.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Botón hamburguesa para mostrar/ocultar menú -->
+  <button class="menu-toggle" id="menuToggle">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Menú Lateral -->
+  <nav class="sidebar" id="sidebar">
+    <div class="menu-title">MENÚ PRINCIPAL</div>
+    <div class="menu-grid">
+      <button id="nuevocliente"><i class="fas fa-user-plus"></i> Nuevo Cliente</button>
+      <button id="buscarcliente"><i class="fas fa-search"></i> Buscar Cliente</button>
+      <button id="ubicarvehiculo"><i class="fas fa-car"></i> Ubicar Vehículo</button>
+      <button id="buscarregistro"><i class="fas fa-folder-open"></i> Buscar Registro</button>
+      <button id="historial"><i class="fas fa-history"></i> Historial</button>
+      <button id="informes"><i class="fas fa-chart-bar"></i> Informes</button>
+    </div>
+    <button id="cierre"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+  </nav>
+
+  <main class="main-content" id="mainContent">
+    <!-- FORMULARIO DE BUSQUEDA -->
+    <div class="formulario">
+      <div class="titulo">BUSCAR REGISTRO</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>NOMBRES</label>
+          <input type="text" class="form-control" id="nombres" readonly>
         </div>
-        <button id="cierre"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
-    </nav>
-    <main class="main-content" id="mainContent">
-        <div class="formulario"> 
-            <div class="titulo">BUSCAR REGISTRO</div>
-          <!--<form action="../api/registros/cliente_nuevo.php" method="POST">--> 
-            <div class="form-grid">
-                    <div class="form-group">
-                        <label>NOMBRES</label>
-                        <input type="text" class="form-control" id="nombres">
-                    </div>
-                    <div class="form-group">
-                        <label>APELLIDOS</label>
-                        <input type="text" class="form-control" id="apellidos">
-                    </div>
-                    <div class="form-group">
-                        <label>PLACA</label>
-                        <input type="text" class="form-control" id="placa">
-                    </div>
-                </div>
-                    <div class="form-actions">
-                        <button type="button" id="regresar">REGRESAR</button>
-                        <button type="submit" id="buscarregistro1">BUSCAR</button>
-                    </div>
-            <!--</form>-->
+        <div class="form-group">
+          <label>APELLIDOS</label>
+          <input type="text" class="form-control" id="apellidos" readonly>
         </div>
-    </main>    
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="module" src="../js/index.js"></script>
-    <script>
-        // Control del menú lateral
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            const mainContent = document.getElementById('mainContent');
-            sidebar.classList.toggle('active');
-            mainContent.classList.toggle('active');
-            this.classList.toggle('active');
+        <div class="form-group">
+          <label>DOCUMENTO</label>
+          <input type="text" class="form-control" id="documento">
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="button" id="regresar">REGRESAR</button>
+        <button type="submit" id="buscarregistro1">BUSCAR</button>
+      </div>
+    </div>
+
+    <!-- SECCION NOVEDADES -->
+    <div class="formulario" id="novedadesVehiculo" style="display: none; margin-top: 40px;">
+      <div class="titulo">NOVEDADES DEL VEHÍCULO</div>
+      <form id="formNovedades">
+        <div class="form-group">
+          <label>Observaciones:</label>
+          <input type="text" class="form-control" id="observaciones" readonly>
+        </div>
+        <div class="form-group">
+          <label>Elementos de valor:</label>
+          <input type="text" class="form-control" id="elementos" readonly>
+        </div>
+        <div class="form-group">
+          <label>Ubicación del vehículo:</label>
+          <input type="text" class="form-control" id="ubicacion" readonly>
+        </div>
+        <div class="form-group">
+          <label>Placa:</label>
+          <input type="text" class="form-control" id="placaNovedad" readonly>
+        </div>
+        <div class="form-group">
+          <label>Fecha y hora de entrada:</label>
+          <input type="text" class="form-control" id="entrada" readonly>
+        </div>
+        <div class="form-group">
+          <label>Fecha y hora de salida:</label>
+          <input type="text" class="form-control" id="salida" readonly>
+        </div>
+        <div class="form-group">
+          <label>Imagen registrada:</label>
+          <div style="text-align: center;">
+            <img id="imagenNovedad" src="" alt="Imagen de la novedad"
+                 style="max-width: 100%; max-height: 400px; border: 1px solid #ccc; border-radius: 8px; padding: 5px; cursor: pointer;">
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Modal para ampliar imagen -->
+  <div class="modal fade" id="modalImagen" tabindex="-1" role="dialog" aria-labelledby="modalImagenLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Imagen de la novedad</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          <img id="imagenAmpliada" src="" alt="Imagen ampliada" style="max-width: 100%; max-height: 80vh; border-radius: 8px;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="module" src="../js/index.js"></script>
+
+  <script>
+    // Control del menú lateral
+    document.getElementById('menuToggle').addEventListener('click', function () {
+      const sidebar = document.getElementById('sidebar');
+      const mainContent = document.getElementById('mainContent');
+      sidebar.classList.toggle('active');
+      mainContent.classList.toggle('active');
+      this.classList.toggle('active');
+    });
+
+    // Mostrar modal de imagen
+    document.addEventListener("DOMContentLoaded", () => {
+      const imagenMiniatura = document.getElementById("imagenNovedad");
+      const imagenAmpliada = document.getElementById("imagenAmpliada");
+
+      if (imagenMiniatura && imagenAmpliada) {
+        imagenMiniatura.addEventListener("click", () => {
+          const src = imagenMiniatura.getAttribute("src");
+          if (src) {
+            imagenAmpliada.setAttribute("src", src);
+            $('#modalImagen').modal('show');
+          }
         });
-    </script>
-  </body>
+      }
+    });
+  </script>
+</body>
 </html>
