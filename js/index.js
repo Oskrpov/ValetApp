@@ -11,6 +11,7 @@ document.addEventListener("click", (e) => {
   if (e.target.matches("#ubicarvehiculo")) location.href = "busqueda_vehiculo.html"
   if (e.target.matches("#buscarregistro")) location.href = "buscar_registro.html"
   if (e.target.matches("#Guardarclientenuevo")) location.href = "index.html"
+  if (e.target.matches("#historial")) location.href = "historial.html"
   if (e.target.matches("#exitoso")) location.href = "index.html"
 }
 )
@@ -277,4 +278,76 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+// Historial de visitas de cliente (solo si estamos en historial.html)
+document.addEventListener("DOMContentLoaded", () => {
+  const formHistorial = document.getElementById("form_busqueda");
+  const contenedorHistorial = document.getElementById("resultado_historial");
 
+  if (formHistorial && contenedorHistorial) {
+    formHistorial.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const documento = document.getElementById("documento").value.trim();
+
+      try {
+        const response = await fetch("../api/registros/buscar_historial_cliente.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: `documento=${encodeURIComponent(documento)}`
+        });
+
+        const data = await response.json();
+        console.log("Respuesta del servidor:", data);
+
+        // ⚠️ Si es objeto con error
+        if (!Array.isArray(data)) {
+          console.error("Error del servidor:", data.msg || "Respuesta inesperada");
+          contenedorHistorial.innerHTML = `<div class="alert alert-danger">Hubo un problema: ${data.msg || "respuesta no válida."}</div>`;
+          return;
+        }
+
+        // ✅ Si no hay visitas
+        if (data.length === 0) {
+          contenedorHistorial.innerHTML = `<div class="alert alert-warning">No se encontraron visitas para este cliente.</div>`;
+          return;
+        }
+
+        // ✅ Construir tabla
+        let tabla = `
+          <h4>Historial de Visitas</h4>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th>Placa</th>
+                <th>Ubicación</th>
+                <th>Observaciones</th>
+                <th>Valor</th>
+                <th>Entrada</th>
+                <th>Salida</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+
+        data.forEach(visita => {
+          tabla += `
+            <tr>
+              <td>${visita.Placa}</td>
+              <td>${visita.Ubicacion_veh}</td>
+              <td>${visita.observaciones}</td>
+              <td>${visita.Objet_Valor}</td>
+              <td>${visita.Entrada || ''}</td>
+              <td>${visita.Salida || ''}</td>
+            </tr>
+          `;
+        });
+
+        tabla += `</tbody></table>`;
+        contenedorHistorial.innerHTML = tabla;
+
+      } catch (error) {
+        console.error("Error de conexión:", error);
+        contenedorHistorial.innerHTML = `<div class="alert alert-danger">Error de conexión con el servidor.</div>`;
+      }
+    });
+  }
+});

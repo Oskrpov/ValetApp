@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <title>Búsqueda de Historial</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/Estilo_Nuevo_Cliente.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Botón hamburguesa -->
+  <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+
+  <!-- Menú lateral -->
+  <nav class="sidebar" id="sidebar">
+    <div class="menu-title">MENÚ PRINCIPAL</div>
+    <div class="menu-grid">
+      <button id="nuevocliente"><i class="fas fa-user-plus"></i> Nuevo Cliente</button>
+      <button id="buscarcliente"><i class="fas fa-search"></i> Buscar Cliente</button>
+      <button id="buscarregistro"><i class="fas fa-folder-open"></i> Buscar Registro</button>
+      <button id="historial"><i class="fas fa-history"></i> Historial</button>
+      <button id="informes"><i class="fas fa-chart-bar"></i> Informes</button>
+    </div>
+    <button id="cierre"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+  </nav>
+
+  <main class="main-content" id="mainContent">
+    <div class="formulario">
+      <div class="titulo">BUSCAR HISTORIAL DEL CLIENTE</div>
+
+      <form id="form_historial">
+        <div class="form-group">
+          <label>DOCUMENTO</label>
+          <input type="text" class="form-control" id="documento" required>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="regresar">Regresar</button>
+          <button type="submit" id="buscador">Buscar</button>
+        </div>
+      </form>
+
+      <div id="resultado_historial" class="mt-4" style="background:white; padding:20px; border-radius:10px;"></div>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script type="module" src="../js/index.js"></script>
+  <script type="module" src="../js/historial_cliente.js"></script>
+  <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+    <!-- Modal sin resultados -->
+<div class="modal fade" id="modalSinResultados" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-warning text-dark">
+        <h5 class="modal-title" id="modalLabel">Sin resultados</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        No se encontraron visitas registradas para este cliente.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
