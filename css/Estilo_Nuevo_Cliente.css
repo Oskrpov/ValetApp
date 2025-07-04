@@ -348,3 +348,37 @@ label {
     background-color: #922b21;
     transform: translateY(-2px);
 }
+.resultado-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#BuscarFechas {
+    font-weight: bold;
+    background-color: #27ae60;
+    border-color: #27ae60;
+    color: #000;
+    border-radius: 6px;
+    height: 45px;
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
+}
+#BuscarFechas:hover {
+    background-color: #1e8449;
+    transform: translateY(-2px);
+}
+#limpiar {
+    font-weight: bold;
+    background-color: #f39c12;
+    border-color: #f39c12;
+    color: #000;
+    border-radius: 6px;
+    height: 45px;
+    box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
+}
+#limpiar:hover {
+    background-color: #d68910;
+    transform: translateY(-2px);
+}
